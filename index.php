@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	function fetchData () {
 		try { //                 Serveur        Nom de la DB     Encodage      Utilisateur & mdp
 			$db = new PDO('mysql:host=localhost;dbname=exercices_mysql; charset=utf8','root','');
@@ -6,7 +8,7 @@
 			die('Erreur: '.$e->getMessage());
 		}
 	
-		$result =  $db->query('SELECT * FROM météo');
+		$result =  $db->query('SELECT * FROM weather');
 	
 		while ($data = $result->fetch()){
 			echo '<tr>';
@@ -28,7 +30,7 @@
 	<title>WeatherApp</title>
 </head>
 <body>
-	<div class="container col-lg-4">
+	<div class="container">
 		<table class='table table-sm table-hover'>
 			<tr>
 				<th scope="col">Ville</th>
@@ -49,11 +51,17 @@
 					<input name='max' type="text" class='form-control' placeholder='Maxima'>
 				</div>
 				<button type='submit' class='btn btn-primary'>Envoyer</button>
+				<?php
+					if(isset($_SESSION['errorMsg'])){
+						echo '<div style="color: red;">';
+						echo $_SESSION['errorMsg'];
+						echo '</div>';
+
+						unset($_SESSION['errorMsg']);
+					}
+				?>
 			</div>
     	</form>
-		<div class="response">
-			
-		</div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
