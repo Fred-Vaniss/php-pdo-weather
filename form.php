@@ -31,7 +31,7 @@ if (isset($_POST['city']) && isset($_POST['min']) && isset($_POST['max'])){
 		'max' => FILTER_SANITIZE_NUMBER_INT
 	));
 
-	try { //                 Serveur        Nom de la DB     Encodage      Utilisateur & mdp
+	try { //           Serveur        		Nom de la DB     	   Encodage      Utilisateur & mdp
 		$db = new PDO('mysql:host=localhost;dbname=exercices_mysql;charset=utf8','root','');
 	} catch (exception $e) {
 		die('Erreur: '.$e->getMessage());
