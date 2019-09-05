@@ -1,15 +1,20 @@
 <?php
+	// Ouverture de la session pour réceptionner une message d'erreur si il y en a une
 	session_start();
 
+	//Fonction de liste des éléments contenu dans la BDD (exécuté à la ligne 52)
 	function fetchData () {
+		// Connection à la BDD
 		try { //           Serveur              Nom de la DB            Encodage      Utilisateur & mdp
 			$db = new PDO('mysql:host=localhost;dbname=exercices_mysql; charset=utf8','root','');
 		} catch (exception $e) {
 			die('Erreur: '.$e->getMessage());
 		}
 	
+		// Préparation de la requête SQL
 		$result =  $db->query('SELECT * FROM weather');
 	
+		// Exécution de la requête et lister les différents éléments contenu dans le tableau
 		while ($data = $result->fetch()){
 			echo '<tr>';
 			echo '	<td> <input type="checkbox" class="delete" value="'.$data['id'].'" title="Supprimer"> '.$data['ville'].'</td>';
@@ -19,12 +24,15 @@
 		}
 	}
 
+	//Fonction d'affichage de message d'erreur (exécuté à la ligne 67)
 	function errorMsg() {
 		if(isset($_SESSION['errorMsg'])){
+			// Affichage du message d'erreur
 			echo '<div style="color: red;">';
 			echo $_SESSION['errorMsg'];
 			echo '</div>';
 
+			// Suppression du message
 			unset($_SESSION['errorMsg']);
 		}
 	}

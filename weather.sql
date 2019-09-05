@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  jeu. 05 sep. 2019 à 08:58
+-- Généré le :  jeu. 05 sep. 2019 à 14:22
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.19
 
@@ -29,22 +29,42 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `weather` (
-  `ville` varchar(9) COLLATE utf16_bin DEFAULT NULL,
-  `haut` int(11) DEFAULT NULL,
-  `bas` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
+  `id` int(11) NOT NULL,
+  `ville` text COLLATE utf8_bin NOT NULL,
+  `bas` int(100) NOT NULL,
+  `haut` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `weather`
 --
 
-INSERT INTO `weather` (`ville`, `haut`, `bas`) VALUES
-('Bruxelles', 27, 13),
-('Liège', 25, 15),
-('Namur', 26, 15),
-('Charleroi', 25, 12),
-('Bruges', 28, 16),
-('Shnaffon', 12, 18);
+INSERT INTO `weather` (`id`, `ville`, `bas`, `haut`) VALUES
+(11, 'Bruxelles', 13, 27),
+(12, 'Liège', 15, 25),
+(13, 'Namur', 15, 26),
+(14, 'Charleroi', 12, 25),
+(15, 'Bruges', 16, 28);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `weather`
+--
+ALTER TABLE `weather`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `weather`
+--
+ALTER TABLE `weather`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
