@@ -36,7 +36,5 @@ if (isset($_POST['city']) && isset($_POST['min']) && isset($_POST['max'])){
 
 	$request->execute(array($data['city'],$data['min'],$data['max']));
 
-
-
-
+	header('Location: index.php');
 }

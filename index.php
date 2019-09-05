@@ -18,6 +18,16 @@
 			echo '</tr>';
 		}
 	}
+
+	function errorMsg() {
+		if(isset($_SESSION['errorMsg'])){
+			echo '<div style="color: red;">';
+			echo $_SESSION['errorMsg'];
+			echo '</div>';
+
+			unset($_SESSION['errorMsg']);
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -51,15 +61,9 @@
 					<input name='max' type="text" class='form-control' placeholder='Maxima'>
 				</div>
 				<button type='submit' class='btn btn-primary'>Envoyer</button>
-				<?php
-					if(isset($_SESSION['errorMsg'])){
-						echo '<div style="color: red;">';
-						echo $_SESSION['errorMsg'];
-						echo '</div>';
-
-						unset($_SESSION['errorMsg']);
-					}
-				?>
+				<div>
+					<?php errorMsg() ?>
+				</div>
 			</div>
     	</form>
 	</div>
