@@ -61,10 +61,8 @@
 					<input name='max' type="text" class='form-control' placeholder='Maxima'>
 				</div>
 				<button type='submit' class='btn btn-primary'>Envoyer</button>
-				<div>
-					<?php errorMsg() ?>
-				</div>
 			</div>
+			<?php errorMsg() ?>
     	</form>
 	</div>
 
